@@ -62,4 +62,3 @@ function compile(input) {
 module.exports = {
     'compile': compile
 };
-
