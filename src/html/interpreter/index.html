@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <script src="interpreter.js"></script>
+        <style>
+            html, body {
+                font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let output = document.getElementById('output');
+                let evalForm = document.getElementById('eval-form');
+                let input = document.getElementById('code-input');
+                evalForm.onsubmit = function (e) {
+                    e.preventDefault();
+                    output.innerHTML = eval(input.value).stdout.join('');
+                };
+            })
+        </script>
+    </body>
+    <html>
+        <form id="eval-form">
+            <textarea id="code-input"></textarea><br>
+            <button>Evaluate code</button>
+        </form>
+        <div id="output">
+        </div>
+    </html>
+</html>
