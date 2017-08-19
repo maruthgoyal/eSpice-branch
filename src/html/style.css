@@ -145,6 +145,7 @@ body{
 	background: #222;
 	color: #fff;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	font-family: open sans;
 	justify-content: center;
