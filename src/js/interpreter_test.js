@@ -6,9 +6,21 @@ const eval = interpreter.eval;
 /*
  * Tests for parser
  */
-assert.deepEqual(parse('++,.-').res, ['+', '+', ',', '.', '-'], 'test primitive operators');
-assert.deepEqual(parse('[..++><,-]').res, [['.', '.', '+', '+', '>', '<', ',', '-']], 'test loop');
-assert.deepEqual(parse('[.,[+,.[]]]').res, [['.', ',', ['+', ',', '.', []]]], 'test nested loop');
+assert.deepEqual(
+  parse('++,.-').res,
+  ['+', '+', ',', '.', '-'],
+  'test primitive operators'
+);
+assert.deepEqual(
+  parse('[..++><,-]').res,
+  [['.', '.', '+', '+', '>', '<', ',', '-']],
+  'test loop'
+);
+assert.deepEqual(
+  parse('[.,[+,.[]]]').res,
+  [['.', ',', ['+', ',', '.', []]]],
+  'test nested loop'
+);
 assert.equal(parse('++[.[]').error, 'unterminated loop');
 
 
@@ -21,8 +33,8 @@ assert.equal(eval('++++++++[>+++++++++<-]>.').stdout[0], 'H', 'test stdout');
 assert.equal(eval('[[]').error, 'unterminated loop');
 assert.deepEqual(
   eval(
-    '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.\
-    >---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.'
+    '++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.' +
+    '>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.'
   ).stdout,
   ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\n'],
   'test hello world'
