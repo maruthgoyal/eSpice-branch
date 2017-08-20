@@ -1,40 +1,38 @@
-#include "eval.cpp"
-
+#include "eval.hpp"
+#include "parse.hpp"
 #include<iostream>
 #include<stdlib.h>
 #include<thread>
 
 using namespace std;
-using namespace std::this_thread;
-using namespace std::chrono;
-using std::chrono::system_clock;
 
-
-// Copyright 2017 Yogesh Aggarwal
-
+void clear_screen()
+{
+#ifdef WINDOWS
+    system("cls");
+#else
+    system ("clear");
+#endif
+}
 
 void lod(string x) {
-    system("cls");
+    clear_screen();
     cout << x;
     for ( int i = 0; i < 6; i++ ) {
-        sleep_for(milliseconds(100));
-        sleep_until(system_clock::now()+milliseconds(200));
         cout << ".";
     }
-    sleep_for(milliseconds(100));
-    sleep_until(system_clock::now()+milliseconds(200));
-    system("cls");
+    clear_screen();
 }
 
 void ph(string x) {
-    system("cls");
+    clear_screen();
     printf("---------------------------------------- \n \n");
     cout << "THE " << x << " COMMAND" << endl;
     printf("\n \n");
 }
 
 void phx(string x) {
-    system("cls");
+    clear_screen();
     printf("---------------------------------------- \n \n");
     cout << x << endl;
     printf("\n \n");
@@ -45,11 +43,9 @@ void pe() {
     printf("Press 1 to go back. \n");
     int x = 0;
     while (!x) {
-        sleep_for(milliseconds(100));
-        sleep_until(system_clock::now() + milliseconds(200));
         cin >> x;
     }
-    system("cls");
+    clear_screen();
 }
 
 void help(int m);
