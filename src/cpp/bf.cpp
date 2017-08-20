@@ -176,6 +176,23 @@ void help(int m) {
     }
 }
 
+void pro_rep(char x[]){
+    int fx = 1;
+    ifstream fin(x);
+    string s;
+    fin >> s;
+    node *cur = parse(&s[0] , s.size());
+    if ( cur == NULL ) {
+        printf("INVALID CODE \n");
+            } 
+    else {
+        printf("\nOUTPUT: ");
+        evaluate(cur);
+        printf("\n");
+    }
+} 
+
+
 void rep() {
     lod("Loading Interpreter");
     int fx = 1;
@@ -228,7 +245,19 @@ void drive() {
     }
 }
 
-int main() {
+int main(int argc, char *argv[]) {
+	if(argc>1){
+		if(strcmp(argv[1],"repl")==0){
+			rep();
+		}
+		if(strcmp(argv[1],"help")==0){
+			help(1);
+		}
+		else{
+			pro_rep(argv[1]);
+		}
+	}
     printf("WELCOME TO THE BRAINFSDF PROGRAM: (--help for HELP) \n");
     drive();
 }
+
