@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<iostream>
 #include<thread>
+#include<fstream>
 #include "eval.hpp"
 #include "parse.hpp"
 /*
